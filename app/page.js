@@ -1,6 +1,6 @@
 'use client'
 //import Image from "next/image";
-import {useState, useEffect} from "react";
+import {useState, useEffect, useCallback} from "react";
 import {firestore} from "@/firebase";
 import { Box, Typography, Modal, Stack, TextField, Button, InputBase } from "@mui/material";
 import { query, collection, getDocs, deleteDoc, getDoc, setDoc, doc } from "firebase/firestore";
@@ -56,16 +56,12 @@ export default function Home() {
     await updateInventory();
   };
 
-  const filterItems = (query) => {
-    if (!query) {
-      setFilteredInventory(inventory);
-    } else {
-      const filteredList = inventory.filter(({name}) =>
-        name.toLowerCase().includes(query.toLowerCase())
-      );
-      setFilteredInventory(filteredList);
-    }
-  };
+  const filterItems = useCallback((query) => {
+    const filteredList = query
+      ? inventory.filter(({ name }) => name.toLowerCase().includes(query.toLowerCase()))
+      : inventory;
+    setFilteredInventory(filteredList);
+  }, [inventory]);
 
   useEffect(() => {
     updateInventory();
@@ -73,7 +69,7 @@ export default function Home() {
 
   useEffect(() => {
     filterItems(searchQuery);
-  }, [searchQuery, inventory]);
+  }, [searchQuery, filterItems]);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
