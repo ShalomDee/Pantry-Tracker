@@ -166,8 +166,8 @@ export default function Home() {
         width="800px" 
         border="1px solid #333" 
         bgcolor="#f5f5f5" 
-        borderRadius="8px"
         sx={{
+          borderRadius: "8px",
           borderTopLeftRadius: "8px",
           borderTopRightRadius: "8px",
         }}
@@ -179,14 +179,16 @@ export default function Home() {
           display="flex"
           alignItems="center" 
           justifyContent="center"
-          borderTopLeftRadius="8px"
-          borderTopRightRadius="8px"
-      >
-        <Typography variant="h2" color = "#333"> 
-          Inventory Items
-        </Typography>
-      </Box>
-      <Stack width='100%' height='300px' spacing={2} overflow='auto'>
+          sx={{
+            borderTopLeftRadius: "8px",
+            borderTopRightRadius: "8px",
+          }}
+        >
+          <Typography variant="h2" color = "#333"> 
+            Inventory Items
+          </Typography>
+        </Box>
+       <Stack width='100%' height='300px' spacing={2} overflow='auto'>
         {filteredInventory.map(({name, quantity}) => (
           <Box
             key={name}
