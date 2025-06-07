@@ -107,15 +107,6 @@ service cloud.firestore {
 
 ---
 
-## What I’d Add Next
-
-* Firebase Auth to separate data per user
-* More robust error feedback in the UI
-* LocalStorage sync in mock mode
-* PWA/offline support
-
----
-
 ## License
 
 MIT — use this however you want, just don’t deploy it as-is with unrestricted Firebase writes.
@@ -125,15 +116,3 @@ MIT — use this however you want, just don’t deploy it as-is with unrestricte
 ## Author
 
 Built by Shalom Donga. I made this while exploring state management, Firestore, and deploying small full-stack projects with Next.js.
-
-```
-
----
-
-Let me know if you want to tailor it further for:
-- A portfolio site
-- A bootcamp project
-- A job application repo
-
-Or if you want help generating the `.env.local.example` or publishing it cleanly to Vercel.
-```
